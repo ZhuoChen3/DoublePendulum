@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Mass of 1st Object"
+            android:hint="1st Object Mass (kg)"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Mass of 2nd Object"
+            android:hint="2nd Object Mass (kg)"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Length of 1st Rod"
+            android:hint="1st Rod Length (m)"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Length of 2nd Rod"
+            android:hint="2nd Rod Length (m)"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Angle of 1st Object"
+            android:hint="1st Object Angle (°)"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Angle of 2nd Object"
+            android:hint="2nd Object Angle (°)"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Velocity of 1st Object"
+            android:hint="1st Object Speed (m/s)"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Velocity of 2nd Object"
+            android:hint="2nd Object Speed (m/s)"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
