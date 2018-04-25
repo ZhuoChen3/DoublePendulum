@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         GraphView graphX = (GraphView) findViewById(R.id.xGraph);
         GraphView graphY = (GraphView) findViewById(R.id.yGragh);
-        graphX.setTitle("Horizontal Position vs Time");
-        graphY.setTitle("Vertical Position vs Time");
+        graphX.setTitle("Horizontal Position (meter) vs Time (second)");
+        graphY.setTitle("Vertical Position (meter) vs Time (second");
     }
 
     public void compute(final View c) {
