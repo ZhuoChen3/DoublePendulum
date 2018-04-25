@@ -1,5 +1,4 @@
 package com.my.doublependulum;
-import java.util.ArrayList;
 
 public class DoublePendulumCreator {
 //    public static int size = DoublePendulumCreator.ITERATION + 1;
