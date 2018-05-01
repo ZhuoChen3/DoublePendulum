@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="reEnter"
-            android:text="Re-Enter"
+            android:text="↑Clear↑"
             android:visibility="visible" />
 
         <Button
@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="clear"
-            android:text="Clear"
+            android:text="↓Clear↓"
             android:visibility="visible" />
 
     </LinearLayout>
