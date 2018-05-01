@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void compute(final View c) {
         Button comp = (Button) c;
-        (comp).setText("COMPUTING");
         mass1 = findViewById(R.id.m1);
         mass2 = findViewById(R.id.m2);
         length1 = findViewById(R.id.l1);
