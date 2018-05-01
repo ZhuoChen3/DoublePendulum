@@ -17,8 +17,8 @@ public class DoublePendulum {
     public static double m2 = 1; //mass of the second particle
     public double theta1; //the first angle
     public double theta2; //the second angle
-    public double omiga1; //the first angular velocity
-    public double omiga2; //the second angular velocity
+    public double omega1; //the first angular velocity
+    public double omega2; //the second angular velocity
     public double t; //the time for an instance
 //    public static double getL1() {
 //        return l1;
@@ -72,26 +72,72 @@ public class DoublePendulum {
     public DoublePendulum(final double angle1, final double angle2, final double angVel1, final double angVel2, final double time) {
         theta1 = angle1;
         theta2 = angle2;
-        omiga1 = angVel1;
-        omiga2 = angVel2;
+        omega1 = angVel1;
+        omega2 = angVel2;
         t = time;
     }
     public double[] move(final double h) {
         double a = m2 / m1;
         double b = l2 / l1;
         double c = g / l1;
+
         double dtheta = theta1 - theta2;
         double part11 = (1 + a) * c * Math.sin(theta1);
-        double part12 = a * b * omiga2 * omiga2 * Math.sin(dtheta);
-        double part13 = a * Math.cos(dtheta) * (omiga1 * omiga1 * Math.sin(dtheta) - c * Math.sin(theta2));
+        double part12 = a * b * omega2 * omega2 * Math.sin(dtheta);
+        double part13 = a * Math.cos(dtheta) * (omega1 * omega1 * Math.sin(dtheta) - c * Math.sin(theta2));
         double part14 = 1 + a * Math.sin(dtheta) * Math.sin(dtheta);
-        double newAngVel1 = omiga1 - h * (part11 + part12 + part13) / part14;
-        double part21 = (1 + a) * (omiga1 * omiga1 * Math.sin(dtheta) - c * Math.sin(theta2));
-        double part22 = Math.cos(dtheta) * (1 + a) * c * Math.sin(theta1) + a * b * omiga2 * omiga2 * Math.sin(dtheta);
+        double a1 = - h * (part11 + part12 + part13) / part14;
+        double part21 = (1 + a) * (omega1 * omega1 * Math.sin(dtheta) - c * Math.sin(theta2));
+        double part22 = Math.cos(dtheta) * (1 + a) * c * Math.sin(theta1) + a * b * omega2 * omega2 * Math.sin(dtheta);
         double part23 = b * (1 + a * Math.sin(dtheta) * Math.sin(dtheta));
-        double newAngVel2 = omiga2 + h * (part21 + part22) / part23;
-        double newAngle1 = theta1 + h * omiga1;
-        double newAngle2 = theta2 + h * omiga2;
+        double a2 = h * (part21 + part22) / part23;
+        double a3 = h * omega1;
+        double a4 = h * omega2;
+
+        dtheta = theta1 + a3 / 2 - theta2 - a4 / 2;
+        part11 = (1 + a) * c * Math.sin(theta1 + a3 / 2);
+        part12 = a * b * (omega2 + a2 / 2) * (omega2 + a2 / 2) * Math.sin(dtheta);
+        part13 = a * Math.cos(dtheta) * ((omega1 + a1 / 2) * (omega1 + a1 / 2) * Math.sin(dtheta) - c * Math.sin(theta2 + a4 / 2));
+        part14 = 1 + a * Math.sin(dtheta) * Math.sin(dtheta);
+        double b1 = - h * (part11 + part12 + part13) / part14;
+        part21 = (1 + a) * ((omega1 + a1 / 2) * (omega1 + a1 / 2) * Math.sin(dtheta) - c * Math.sin(theta2 + a4 / 2));
+        part22 = Math.cos(dtheta) * (1 + a) * c * Math.sin(theta1 + a3 / 2) + a * b * (omega2 + a2 / 2) * (omega2 + a2 / 2) * Math.sin(dtheta);
+        part23 = b * (1 + a * Math.sin(dtheta) * Math.sin(dtheta));
+        double b2 = h * (part21 + part22) / part23;
+        double b3 = h * (omega1 + a1 / 2);
+        double b4 = h * (omega2 + a2 / 2);
+
+        dtheta = theta1 + b3 / 2 - theta2 - b4 / 2;
+        part11 = (1 + a) * c * Math.sin(theta1 + b3 / 2);
+        part12 = a * b * (omega2 + b2 / 2) * (omega2 + b2 / 2) * Math.sin(dtheta);
+        part13 = a * Math.cos(dtheta) * ((omega1 + b1 / 2) * (omega1 + b1 / 2) * Math.sin(dtheta) - c * Math.sin(theta2 + b4 / 2));
+        part14 = 1 + a * Math.sin(dtheta) * Math.sin(dtheta);
+        double c1 = - h * (part11 + part12 + part13) / part14;
+        part21 = (1 + a) * ((omega1 + b1 / 2) * (omega1 + b1 / 2) * Math.sin(dtheta) - c * Math.sin(theta2 + b4 / 2));
+        part22 = Math.cos(dtheta) * (1 + a) * c * Math.sin(theta1 + b3 / 2) + a * b * (omega2 + b2 / 2) * (omega2 + b2 / 2) * Math.sin(dtheta);
+        part23 = b * (1 + a * Math.sin(dtheta) * Math.sin(dtheta));
+        double c2 = h * (part21 + part22) / part23;
+        double c3 = h * (omega1 + b1 / 2);
+        double c4 = h * (omega2 + b2 / 2);
+
+        dtheta = theta1 + c3 - theta2 - c4;
+        part11 = (1 + a) * c * Math.sin(theta1 + c3);
+        part12 = a * b * (omega2 + c2) * (omega2 + c2) * Math.sin(dtheta);
+        part13 = a * Math.cos(dtheta) * ((omega1 + c1) * (omega1 + c1) * Math.sin(dtheta) - c * Math.sin(theta2 + c4));
+        part14 = 1 + a * Math.sin(dtheta) * Math.sin(dtheta);
+        double d1 = - h * (part11 + part12 + part13) / part14;
+        part21 = (1 + a) * ((omega1 + c1) * (omega1 + c1) * Math.sin(dtheta) - c * Math.sin(theta2 + c4));
+        part22 = Math.cos(dtheta) * (1 + a) * c * Math.sin(theta1 + c3) + a * b * (omega2 + c2) * (omega2 + c2) * Math.sin(dtheta);
+        part23 = b * (1 + a * Math.sin(dtheta) * Math.sin(dtheta));
+        double d2 = h * (part21 + part22) / part23;
+        double d3 = h * (omega1 + c1);
+        double d4 = h * (omega2 + c2);
+
+        double newAngVel1 = omega1 + a1 / 6 + b1 / 3 + c1 / 3 + d1 / 6;
+        double newAngVel2 = omega2 + a2 / 6 + b2 / 3 + c2 / 3 + d2 / 6;
+        double newAngle1 = theta1 + a3 / 6 + b3 / 3 + c3 / 3 + d3 / 6;
+        double newAngle2 = theta2 + a4 / 6 + b4 / 3 + c4 / 3 + d4 / 6;
+
         double newTime = t + h;
         double[] returnArray = {newAngle1, newAngle2, newAngVel1, newAngVel2, newTime};
         return returnArray;

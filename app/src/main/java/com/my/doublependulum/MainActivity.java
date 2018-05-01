@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText angle2;
     private EditText angularVelocity1;
     private EditText angularVelocity2;
-    private final int ITERATION = 100000;
-    private final double STEP_SIZE = 0.0002;
+    private final int ITERATION = 20000;
+    private final double STEP_SIZE = 0.001;
     private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint> series2;
     @Override
